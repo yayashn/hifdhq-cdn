@@ -17,8 +17,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
+      - name: Create deployment directory
+        run: |
+          mkdir -p deploy_folder
+          # Copy only font files to the deployment folder
+          find . -name "*.ttf" -o -name "*.woff" -o -name "*.woff2" -o -name "*.otf" | xargs -I{} cp {} deploy_folder/
+          # You can add other specific files you need
+          
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./
-          branch: gh-pages 
+          folder: ./deploy_folder
+          branch: gh-pages
+          clean: true # Automatically remove deleted files from the deployment 

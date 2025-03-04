@@ -1,0 +1,9 @@
+{
+  "name": "hifdhq-cdn",
+  "version": "1.0.0",
+  "description": "CDN for HifdhQ fonts and data",
+  "scripts": {
+    "build": "mkdir -p dist && cp -r QCF2 QCF_P dist/"
+  },
+  "license": "MIT"
+} 
